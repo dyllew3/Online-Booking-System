@@ -1,0 +1,31 @@
+<div>
+	<h1>Signup form</h2>
+			
+<%= nested_form_for :user, url: '/usersignup'    do|f| %>
+      <%= f.text_field :first_name, :placeholder => 'First Name' %><br>
+      <%= f.text_field :last_name, :placeholder => 'Last Name' %><br>
+      <%= f.text_field :email, :placeholder => 'Email' %> <br>
+      <%= f.password_field :password, :placeholder => 'Password' %><br>
+        <%= f.password_field :password_confirmation, :placeholder => 'Password confirmtation' %><br>
+				
+	 <%=f.number_field :amount,:placeholder => 'Number of children'%>
+	 <%= f.submit "Sign up" %>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+</div>
