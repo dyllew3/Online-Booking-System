@@ -2,7 +2,7 @@
 <%= form_tag '/enroll' do%>
 <% @list.each do |student|  %>
 	<%=  fields_for 'students[]', student do |s|%>
-			<%= s.label :first_name%><br>
+		<p>	<%= s.label :first_name%><br>
 		  <%= s.text_field :first_name %><br>
          	<%= s.label :last_name%><br>
 		  <%= s.text_field :last_name %><br>
@@ -10,7 +10,7 @@
 		  <%= s.number_field :age %><br>
          <%= s.label :guardian %><br>
 		<%=s.text_field :parents  %><br>
-
+</p>
 	<% end  %>
 <% end  %>
 <%= submit_tag %><br>

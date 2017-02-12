@@ -3,13 +3,13 @@
 one:
   subject: MyString
   teacher: MyString
-  times: MyString
+  students: MyString
   capacity: 1
-  spots_left: 1
+  spaces: 1
 
 two:
   subject: MyString
   teacher: MyString
-  times: MyString
+  students: MyString
   capacity: 1
-  spots_left: 1
+  spaces: 1

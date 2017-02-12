@@ -11,28 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210152908) do
+ActiveRecord::Schema.define(version: 20170212180302) do
 
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "age"
-    t.string   "parents"
+    t.string   "parent"
+    t.integer  "user_id"
+    t.string   "subjects"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
   end
 
-  add_index "students", ["user_id"], name: "index_students_on_user_id"
+  create_table "subects", force: :cascade do |t|
+    t.string   "subject"
+    t.string   "teacher"
+    t.string   "students",   default: "--- []\n"
+    t.integer  "capacity"
+    t.integer  "spaces"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
 
   create_table "subjects", force: :cascade do |t|
     t.string   "subject"
     t.string   "teacher"
-    t.string   "times"
+    t.string   "students",   default: "--- []\n"
     t.integer  "capacity"
-    t.integer  "spots_left"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "spaces"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -40,25 +48,22 @@ ActiveRecord::Schema.define(version: 20170210152908) do
     t.string   "subjects"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.string   "activation_digest"
-    t.boolean  "activated",         default: false
-    t.datetime "activated_at"
+    t.string   "email"
+    t.boolean  "authenticated",   default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.boolean  "admin"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email"
     t.string   "password_digest"
-    t.string   "role"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "amount"
+    t.string   "email"
+    t.boolean  "authenticated",   default: false
+    t.boolean  "admin",           default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
 end

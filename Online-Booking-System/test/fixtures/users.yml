@@ -1,7 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  admin: 
+  first_name: MyString
+  last_name: MyString
+  password_digest: MyString
+  email: MyString
+  authenticated: false
+  admin: false
+  students: 
 
 two:
-  admin: 
+  first_name: MyString
+  last_name: MyString
+  password_digest: MyString
+  email: MyString
+  authenticated: false
+  admin: false
+  students: 

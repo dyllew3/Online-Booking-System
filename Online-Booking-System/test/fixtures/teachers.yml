@@ -3,7 +3,17 @@
 one:
   bio: MyText
   subjects: MyString
+  first_name: MyString
+  last_name: MyString
+  password_digest: MyString
+  email: MyString
+  authenticated: false
 
 two:
   bio: MyText
   subjects: MyString
+  first_name: MyString
+  last_name: MyString
+  password_digest: MyString
+  email: MyString
+  authenticated: false

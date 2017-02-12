@@ -1,11 +1,12 @@
 class CreateStudents < ActiveRecord::Migration
   def change
+	
     create_table :students do |t|
       t.string :first_name
       t.string :last_name
-      t.integer :age
-      t.string :class
-      t.string :parents
+      t.string :parent
+      t.integer :user_id
+      t.string :subjects
 
       t.timestamps null: false
     end

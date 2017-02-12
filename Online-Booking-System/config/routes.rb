@@ -1,19 +1,23 @@
 Rails.application.routes.draw do
 
 
+  	resources :subjects
+  	resources :subects
+  	resources :students
+  	resources :users
+  	resources :teachers
 	root to: 'welcome#index'
 	get '/usersignup' => 'users#new'
 	post '/usersignup' => 'users#create'
+	get '/teachersignup' => 'teachers#new'
+	post '/teachersignup' => 'teachers#create'
 	get '/login' => 'sessions#new'
 	post '/login' => 'sessions#create'
 	get '/enroll' => 'students#enroll'
-	post '/enroll' => 'users#assign'
+	post '/enroll' => 'students#create'
 	delete '/logout' => 'sessions#destroy'
 		
-
-	resources :user
-	resources :students
-	resources :subjects
+	resource :user
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

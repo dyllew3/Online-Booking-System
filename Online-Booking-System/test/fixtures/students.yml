@@ -3,13 +3,13 @@
 one:
   first_name: MyString
   last_name: MyString
-  age: 1
-  class: MyString
-  parents: MyString
+  parent: MyString
+  user_id: 1
+  subjects: MyString
 
 two:
   first_name: MyString
   last_name: MyString
-  age: 1
-  class: MyString
-  parents: MyString
+  parent: MyString
+  user_id: 1
+  subjects: MyString

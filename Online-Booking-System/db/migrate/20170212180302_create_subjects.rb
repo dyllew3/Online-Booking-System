@@ -3,9 +3,9 @@ class CreateSubjects < ActiveRecord::Migration
     create_table :subjects do |t|
       t.string :subject
       t.string :teacher
-      t.string :times, array:true
+      t.string :students,array:true, :default =>[]
       t.integer :capacity
-      t.integer :spots_left
+      t.integer :spaces
 
       t.timestamps null: false
     end
