@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= nested_form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -33,9 +33,22 @@
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
-	<%= f.fields_for :students do |student| %>
-		 <%= render :partial=> 'student', :f => student %>
+	<table id="tasks">
+	<%= f.fields_for :students do |builder| %>
+		<tr class="fields"> 
+		<td><%= render "newstudent", :f => builder %></td>
+		<td>	<%= builder.link_to_remove "Remove Student" %>		</td>
+		</tr>
+
 	<% end  %>
+
+	</table>	
+	<p><%= f.link_to_add "Add a student", :students, "data-target" => "#tasks" %></p>	
+
+
+
+
+
  <div class="actions">
     <%= f.submit %>
   </div>

@@ -15,6 +15,9 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+	1.times do
+		student = @user.students.build
+	end
   end
 
   # GET /users/1/edit
