@@ -6,7 +6,9 @@ class CreateStudents < ActiveRecord::Migration
       t.integer :age
       t.string :year
       t.string :dob
-	  t.references :parent, polymorphic:true,index:true
+      t.references :parent, index: true, foreign_key: true
+      t.references :subject, index: true, foreign_key: true
+
       t.timestamps null: false
     end
   end
