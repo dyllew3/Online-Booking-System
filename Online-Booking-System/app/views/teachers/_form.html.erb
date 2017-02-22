@@ -1,0 +1,46 @@
+<%= nested_form_for(@teacher) do |f| %>
+  <% if @teacher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
+
+      <ul>
+      <% @teacher.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= f.fields_for :user do |u| %>
+  <div class="field">
+    <%= u.label :first_name %><br>
+    <%= u.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= u.label :last_name %><br>
+    <%= u.text_field :last_name %>
+  </div>
+
+    <div class="field">
+    <%= u.label :password %><br>
+    <%= u.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= u.label :password_confirmation %><br>
+    <%= u.password_field :password_confirmation %>
+  </div>
+
+  
+  <div class="field">
+    <%= u.label :email %><br>
+    <%= u.text_field :email %>
+  </div>
+<% end  %>
+  <div class="field">
+    <%= f.label :bio %><br>
+    <%= f.text_area :bio %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

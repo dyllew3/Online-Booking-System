@@ -1,0 +1,76 @@
+<%= nested_form_for(@parent) do |f| %>
+  <% if @parent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@parent.errors.count, "error") %> prohibited this parent from being saved:</h2>
+
+      <ul>
+      <% @parent.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= f.fields_for :user do |u|  %>
+
+  <div class="field">
+    <%= u.label :first_name %><br>
+    <%= u.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= u.label :last_name %><br>
+    <%= u.text_field :last_name %>
+  </div>
+
+
+  <div class="field">
+    <%= u.label :password %><br>
+    <%= u.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= u.label :password_confirmation %><br>
+    <%= u.password_field :password_confirmation %>
+  </div>
+
+  <div class="field">
+    <%= u.label :email %><br>
+    <%= u.text_field :email %>
+  </div>
+
+<% end  %>
+ <div class="field">
+    <%= f.label :phone_num %><br>
+    <%= f.text_field :phone_num %>
+  </div>
+
+
+	<div id="tasks">
+  <%= f.fields_for :students, @parent.students do |task_form| %>
+  <div class="field">
+    <p style="font-weight:bold">Child<p>
+      <p><%= task_form.label :first_name %><br></p>
+      <p><%= task_form.text_field :first_name %></p>
+      <p><%= task_form.label :last_name %><br></p>
+      <p><%= task_form.text_field :last_name %></p>
+      <p><%= task_form.label :age %><br></p>
+      <p><%= task_form.number_field :age %></p>
+      <p><%= task_form.label :dob %><br></p>
+      <p><%= task_form.text_field :dob %></p>
+      <p><%= task_form.label :year %><br></p>
+      <p><%= task_form.number_field :year %></p>
+ 
+	<p><%= task_form.link_to_remove "Remove this task" %></p>
+ 
+    </div>
+  <% end %>
+</div>
+
+<p><%= f.link_to_add "Add a task", :students, :data => { :target => "#tasks" } %></p>
+	  
+
+
+<div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
