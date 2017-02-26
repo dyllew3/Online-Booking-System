@@ -11,12 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221120532) do
+ActiveRecord::Schema.define(version: 20170226181143) do
+
+  create_table "activities", force: :cascade do |t|
+    t.integer  "ResponsibleTeacher"
+    t.text     "Description"
+    t.integer  "StartClassSuitability"
+    t.integer  "EndClassSuitability"
+    t.date     "StartDate"
+    t.date     "EndDate"
+    t.time     "StartTime"
+    t.time     "EndTime"
+    t.integer  "NoOfChildren"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.string   "ActivityName"
+  end
 
   create_table "parents", force: :cascade do |t|
     t.string   "phone_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "student_classes", force: :cascade do |t|
+    t.string   "StudentClass"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "students", force: :cascade do |t|
@@ -26,34 +47,17 @@ ActiveRecord::Schema.define(version: 20170221120532) do
     t.string   "year"
     t.string   "dob"
     t.integer  "parent_id"
-    t.integer  "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "students", ["parent_id"], name: "index_students_on_parent_id"
-  add_index "students", ["subject_id"], name: "index_students_on_subject_id"
-
-  create_table "subjects", force: :cascade do |t|
-    t.string   "subject"
-    t.integer  "capacity"
-    t.integer  "spots_left"
-    t.string   "teacher"
-    t.integer  "teacher_id"
-    t.boolean  "full"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "days"
-    t.string   "times"
-  end
-
-  add_index "subjects", ["teacher_id"], name: "index_subjects_on_teacher_id"
 
   create_table "teachers", force: :cascade do |t|
     t.text     "bio"
-    t.string   "subjects"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "subjectsi",  default: "--- []\n"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "users", force: :cascade do |t|

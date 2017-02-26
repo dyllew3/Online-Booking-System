@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  resources :activities
   resources :teachers
   resources :parents
   resources :students
-  resources :subjects
   
   root 'welcome#index'
   get '/register' => 'parents#new'

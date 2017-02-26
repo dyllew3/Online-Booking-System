@@ -5,5 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-admin1 = User.create(first_name:'Dylan',last_name:'Lewis',email:'root@email.com',password:'rootpassword69',password_confirmation:'rootpassword69',admin:true)
+StudentClass.create(StudentClass:'Junior Infants')
+StudentClass.create(StudentClass:'Senior Infants')
+StudentClass.create(StudentClass:'1st Class')
+StudentClass.create(StudentClass:'2nd Class')
+StudentClass.create(StudentClass:'3rd Class')
+StudentClass.create(StudentClass:'4th Class')
+StudentClass.create(StudentClass:'5th Class')
+StudentClass.create(StudentClass:'6th Class')
 

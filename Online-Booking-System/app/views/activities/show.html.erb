@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+
+  <strong>ActivityName:</strong>
+  <%= @activity.ActivityName %>
+</p>
+
+<p>
+
+  <strong>Responsibleteacher:</strong>
+  <%= @activity.ResponsibleTeacher %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @activity.Description %>
+</p>
+
+<p>
+  <strong>Startclasssuitability:</strong>
+  <%= StudentClass.find(@activity.StartClassSuitability).StudentClass %>
+</p>
+
+<p>
+  <strong>Endclasssuitability:</strong>
+  <%= StudentClass.find(@activity.EndClassSuitability).StudentClass %>
+</p>
+
+<p>
+  <strong>Start Date:</strong>
+  <%= @activity.StartDate.strftime("%d-%m-%y") %>
+</p>
+
+<p>
+  <strong>End Date:</strong>
+  <%= @activity.EndDate.strftime("%d-%m-%y") %>
+</p>
+
+<p>
+  <strong>Start Time:</strong>
+  <%= @activity.StartTime.strftime("%H:%M:%S") %>
+</p>
+
+<p>
+  <strong>End Time:</strong>
+  <%= @activity.EndTime.strftime("%H:%M:%S") %>
+</p>
+
+<p>
+  <strong>Noofchildren:</strong>
+  <%= @activity.NoOfChildren %>
+</p>
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>
