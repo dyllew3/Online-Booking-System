@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @application.student_id %>
+</p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @application.activity_id %>
+</p>
+
+<%= link_to 'Edit', edit_activity_application_path(@application.activity,@application) %> |
+<%= link_to 'Back', activity_applications_path(@application.activity) %>
