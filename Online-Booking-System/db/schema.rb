@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170226181143) do
+ActiveRecord::Schema.define(version: 20170227124804) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "ResponsibleTeacher"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20170226181143) do
     t.datetime "updated_at",            null: false
     t.string   "ActivityName"
   end
+
+  create_table "activity_dates", force: :cascade do |t|
+    t.integer  "activity_id"
+    t.date     "date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "activity_dates", ["activity_id"], name: "index_activity_dates_on_activity_id"
 
   create_table "parents", force: :cascade do |t|
     t.string   "phone_num"
