@@ -25,5 +25,10 @@
 </table>
 
 <br>
-
+<% if activity_full?(@activity,@applications) %>
 <%= link_to 'New Application', new_activity_application_path %>
+<% else %>
+<p>
+  <strong>Activity has been Filled</strong>
+ </p>
+<% end %>

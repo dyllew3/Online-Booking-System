@@ -4,8 +4,8 @@ class ApplicationsController < ApplicationController
   # GET /applications
   # GET /applications.json
   def index
-    activity = Activity.find(params[:activity_id])
-    @applications = activity.applications
+    @activity = Activity.find(params[:activity_id])
+    @applications = @activity.applications
   end
 
   # GET /applications/1
@@ -34,6 +34,7 @@ class ApplicationsController < ApplicationController
     @application = activity.applications.create(application_params)
 
     respond_to do |format|
+     
       if @application.save
         format.html { redirect_to(activity_applications_path, :notice => 'Application was successfully created.') }
         format.json { render :show, status: :created, location: @application }
@@ -65,7 +66,7 @@ class ApplicationsController < ApplicationController
   # DELETE /applications/1.json
   def destroy
   	activity = Activity.find(params[:activity_id])
-  	@application = activity.applications.find(params[:activity_id])
+  	@application = activity.applications.find(params[:id])
     @application.destroy
     respond_to do |format|
       format.html { redirect_to activity_applications_url, notice: 'Application was successfully destroyed.' }
@@ -83,4 +84,11 @@ class ApplicationsController < ApplicationController
     def application_params
       params.require(:application).permit(:student_id, :activity_id)
     end
+    
+    
+    	
 end
+
+def activity_full?(activity, applications)
+    	applications.size < activity.NoOfChildren
+    end
