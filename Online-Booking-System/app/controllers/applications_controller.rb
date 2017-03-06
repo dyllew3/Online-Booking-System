@@ -31,7 +31,9 @@ class ApplicationsController < ApplicationController
   # POST /applications.json
   def create
   	activity = Activity.find(params[:activity_id])
+  	@students = Student.where(parent_id: current_user.userable_id).all
     @application = activity.applications.create(application_params)
+    
 
     respond_to do |format|
      
@@ -49,6 +51,7 @@ class ApplicationsController < ApplicationController
   # PATCH/PUT /applications/1.json
   def update
   	activity = Activity.find(params[:activity_id])
+  	@students = Student.where(parent_id: current_user.userable_id).all
   	@application = activity.applications.find(params[:activity_id])
   	
     respond_to do |format|
