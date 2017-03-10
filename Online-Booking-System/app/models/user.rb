@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 		self.remember_token = User.new_token
 		update_attribute(:remember_digest, User.digest(remember_token))
 	end
-        def admin?
+    def admin?
           self.admin
         end
         def authenticated?

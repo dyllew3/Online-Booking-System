@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/registerteacher' => 'teachers#new'
   get 'parents/homepage' => 'parents#homepage'
   get '/teachers/homepage' => 'teachers#homepage'
+  
   delete '/logout' => 'sessions#destroy'	
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
