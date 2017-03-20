@@ -54,12 +54,9 @@
       <p><%= task_form.text_field :first_name %></p>
       <p><%= task_form.label :last_name %><br></p>
       <p><%= task_form.text_field :last_name %></p>
-      <p><%= task_form.label :age %><br></p>
-      <p><%= task_form.number_field :age %></p>
-      <p><%= task_form.label :dob %><br></p>
-      <p><%= task_form.text_field :dob %></p>
+      
       <p><%= task_form.label :year %><br></p>
-      <p><%= task_form.number_field :year %></p>
+      <p><%= task_form.collection_select(:year, StudentClass.all, :id, :StudentClass) %></p>
  
 	<p><%= task_form.link_to_remove "Remove this task" %></p>
  

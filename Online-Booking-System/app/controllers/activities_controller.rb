@@ -31,12 +31,12 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
-      	@activity_date = ActivityDate.new(activity_id: @activity.id,date: @activity.StartDate)
-      	@activity_date.save
-      	@activity_date = ActivityDate.new(activity_id: @activity.id,date:@activity_date.date + 7)
-      	while @activity_date.date <= @activity.EndDate do
-      		@activity_date.save	
-      		@activity_date = ActivityDate.new(activity_id: @activity.id,date:@activity_date.date + 7)
+      	activity_date = ActivityDate.new(activity_id: @activity.id,date: @activity.StartDate)
+      	activity_date.save
+      	activity_date = ActivityDate.new(activity_id: @activity.id,date: activity_date.date + 7)
+      	while activity_date.date <= @activity.EndDate do
+      		activity_date.save	
+      		activity_date = ActivityDate.new(activity_id: @activity.id,date: activity_date.date + 7)
       	end
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render :show, status: :created, location: @activity }
@@ -56,12 +56,12 @@ class ActivitiesController < ApplicationController
         activityDates = ActivityDate.where(activity_id: @activity.id).all
         activityDates.destroy_all
         
-        @activity_date = ActivityDate.new(activity_id: @activity.id,date: @activity.StartDate)
-      	@activity_date.save
-      	@activity_date = ActivityDate.new(activity_id: @activity.id,date:@activity_date.date + 7)
-      	while @activity_date.date <= @activity.EndDate do
-      		@activity_date.save	
-      		@activity_date = ActivityDate.new(activity_id: @activity.id,date:@activity_date.date + 7)
+        activity_date = ActivityDate.new(activity_id: @activity.id,date: @activity.StartDate)
+      	activity_date.save
+      	activity_date = ActivityDate.new(activity_id: @activity.id,date: activity_date.date + 7)
+      	while activity_date.date <= @activity.EndDate do
+      		activity_date.save	
+      		activity_date = ActivityDate.new(activity_id: @activity.id,date: activity_date.date + 7)
       	end
         format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
         format.json { render :show, status: :ok, location: @activity }
