@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LockedOutTest < ActiveSupport::TestCase
+class LockoutTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

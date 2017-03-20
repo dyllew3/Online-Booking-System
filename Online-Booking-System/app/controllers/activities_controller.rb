@@ -14,15 +14,9 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/new
   def new
-	@activity = nil
-	user  = User.find_by(id: session[:user_id] )
-	if( user == nil)
-		redirect_to root_url
-	elsif(user.userable_type != "Teacher")
-		redirect_tp root_url  
-    else
-		@activity = Activity.new
-	end
+	
+			@activity = Activity.new
+	
   end
 
   # GET /activities/1/edit

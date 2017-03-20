@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
           self.admin
         end
         def authenticated?
-          self.authenicated
+          return self.authenicated
         end
 
         def locked?

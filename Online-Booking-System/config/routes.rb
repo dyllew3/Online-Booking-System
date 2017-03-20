@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   resources :activities do
   	resources :applications
   end
+  resources :users
   resources :teachers
   resources :parents
   resources :students
   
   root 'welcome#index'
+  get '/approve' => 'welcome#approve'
   get '/register' => 'parents#new'
   get '/registerteacher' => 'teachers#new'
   get 'parents/homepage' => 'parents#homepage'
@@ -19,6 +21,10 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/newclass' => 'subjects#new'
   post '/newclass' => 'subjects#create'
+
+  get '*a', :to => "errors#show"
+   
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

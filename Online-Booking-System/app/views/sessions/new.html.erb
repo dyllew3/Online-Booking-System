@@ -2,7 +2,8 @@
 <% provide(:title,"Log in")  %>
 <h1>Log in</h1>
 <h2><%= flash[:message]    %></h2>
-<h3><%="The login count is "  + session[:login_count].to_s  unless session[:login_count] == nil  %></h3>
+
+
 <div>
   <%= form_for(:session, url: login_path) do |f|  %>
   

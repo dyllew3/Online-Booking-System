@@ -21,9 +21,14 @@ class TeachersController < ApplicationController
 
   # GET /teachers/new
   def new
+	@teacher = nil
+	if session[:user_id] ==nil
     @teacher = Teacher.new
 	@teacher.subjects = params[:subjects]
-	@teacher.build_user    
+	@teacher.build_user
+	else
+	   redirect_to root_url 
+	end
   end
 
   # GET /teachers/1/edit

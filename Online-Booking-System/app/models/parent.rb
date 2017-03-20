@@ -4,5 +4,5 @@ class Parent < ActiveRecord::Base
 	accepts_nested_attributes_for :user
 	accepts_nested_attributes_for :students,reject_if: proc { |attributes| attributes['first_name'].nil? }
 	validates :user,presence: true
-        validates :students,presence: true
+    validates :students,presence: true
 end
