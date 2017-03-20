@@ -4,18 +4,31 @@ class TeachersController < ApplicationController
   # GET /teachers
   # GET /teachers.json
   def index
+	@user = User.find_by(id:session[:user_id]) || false
+	if @user != false and @user.admin? and @user.authenticated?
+	
     @teachers = Teacher.all
+	else redirect_to ("/teachers/" + session[:user_id].to_s)
+	end
   end
 
   # GET /teachers/1
   # GET /teachers/1.json
-  def show
-  end
+  def homepage 
+	@user = User.find_by(id: session[:user_id])
+   	redirect_to login_url unless !@user.nil? and @user.userable_type == "Teacher"
+   end
 
   # GET /teachers/new
   def new
+	@teacher = nil
+	if session[:user_id] ==nil
     @teacher = Teacher.new
-    @teacher.build.subjects << Subject.new
+	@teacher.subjects = params[:subjects]
+	@teacher.build_user
+	else
+	   redirect_to root_url 
+	end
   end
 
   # GET /teachers/1/edit
@@ -26,9 +39,12 @@ class TeachersController < ApplicationController
   # POST /teachers.json
   def create
     @teacher = Teacher.new(teacher_params)
-    @teacher.build.subjects
+    @teacher.subjects = params[:teacher][:subjects].split(',')	
     respond_to do |format|
       if @teacher.save
+		
+		user = User.find_by( userable_id:@teacher.id,userable_type:"Teacher")
+		session[:user_id] = user.id
         format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
         format.json { render :show, status: :created, location: @teacher }
       else
@@ -43,7 +59,8 @@ class TeachersController < ApplicationController
   def update
     respond_to do |format|
       if @teacher.update(teacher_params)
-        format.html { redirect_to @teacher, notice: 'Teacher was successfully updated.' }
+        
+		format.html { redirect_to @teacher, notice: 'Teacher was successfully updated.' }
         format.json { render :show, status: :ok, location: @teacher }
       else
         format.html { render :edit }
@@ -65,13 +82,11 @@ class TeachersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_teacher
-      @teacher = Teacher.find(params[:id])
+      @teacher = Teacher.find_by(id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def teacher_params
-      :spots_left => :capacity
-      :full => false
-      params.require(:teacher).permit(:first_name, :last_name, :email, :bio, :subjects,subjects_attributes:[:subject,:capacity,:spots_left,:teacher,:full])
+    	params.require(:teacher).permit(:bio, :subjects,user_attributes:[:first_name,:last_name,:email,:password,:password_confirmation])
     end
 end

@@ -7,14 +7,16 @@ class ActivitiesController < ApplicationController
     @activities = Activity.all
   end
 
-  # GET /activities/1
+  # GET /activities/1	
   # GET /activities/1.json
   def show
   end
 
   # GET /activities/new
   def new
-    @activity = Activity.new
+	
+			@activity = Activity.new
+	
   end
 
   # GET /activities/1/edit
