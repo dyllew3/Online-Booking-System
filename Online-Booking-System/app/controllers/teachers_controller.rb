@@ -22,7 +22,12 @@ class TeachersController < ApplicationController
   # GET /teachers/new
   def new
 	@teacher = nil
+	
 	@user = User.find_by(id: session[:user_id])
+	if(@user.nil?)
+		redirect_to login_url
+		return 0
+	end 
 	if @user.admin or @user.userable_type == "Teacher"
     	@teacher = Teacher.new
 		#@teacher.subjects = params[:subjects]
