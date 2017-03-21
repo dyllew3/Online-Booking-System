@@ -31,7 +31,7 @@ class ApplicationsController < ApplicationController
   # POST /applications.json
   def create
   	activity = Activity.find(params[:activity_id])
-  	@students = Student.where(parent_id: current_user.userable_id).all
+  	
     @application = activity.applications.create(application_params)
     
 

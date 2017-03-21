@@ -4,4 +4,4 @@ class FixColumnName < ActiveRecord::Migration
     rename_column :teachers, :subjectsi, :subjects
     end
   end
-end
+

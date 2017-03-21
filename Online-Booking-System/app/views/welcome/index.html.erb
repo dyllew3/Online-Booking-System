@@ -1,5 +1,45 @@
-<div>
-	<h1>Welcome page<h1>
-	<p><%= link_to "Register for account",'/register'%></p>
-	<p><%= link_to "Register as a teacher",'/registerteacher' %></p>
-</div>
+<DOCTYPE html>
+<html lang="en">
+
+<head>
+	<neta charset="utf-8">
+	<title>Home</title>
+	<!-- if need to link stylesheet
+		<link rel="stylesheet" type"text/css" href="welcome.scss">
+	-->
+</head>
+
+<body>
+	<ul class="nav">
+	<div class="logo">
+		<a href="#">Home</a></li>
+	</div>
+	
+	<li><a href="#">Home</a></li>
+	<li><a href="/register">Register for account</a></li>
+	<li><a href="/registerteacher">Register as a teacher</a></li>
+	
+	</ul>
+	
+	<div class="banner">
+		
+		<%= image_tag("banner1.jpg", class:"banner-image")%>
+	</div>
+	
+</body>
+
+
+
+
+
+
+
+
+	<!-- What was originally here
+	<div>
+		<h1 class="welcome_header">Welcome page<h1>
+			<p class="reg-acct"><%= link_to "Register for account",'/register'%></p>
+			<p class="reg-teach">><%= link_to "Register as a teacher",'/registerteacher' %></p>
+	</div>
+	-->
+</html>
