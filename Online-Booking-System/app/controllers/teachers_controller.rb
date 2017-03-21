@@ -22,10 +22,11 @@ class TeachersController < ApplicationController
   # GET /teachers/new
   def new
 	@teacher = nil
-	if session[:user_id] ==nil
-    @teacher = Teacher.new
-	@teacher.subjects = params[:subjects]
-	@teacher.build_user
+	@user = User.find_by(id: session[:user_id])
+	if @user.admin or @user.userable_type == "Teacher"
+    	@teacher = Teacher.new
+		#@teacher.subjects = params[:subjects]
+		@teacher.build_user
 	else
 	   redirect_to root_url 
 	end
@@ -39,13 +40,14 @@ class TeachersController < ApplicationController
   # POST /teachers.json
   def create
     @teacher = Teacher.new(teacher_params)
-    @teacher.subjects = params[:teacher][:subjects].split(',')	
+    #@teacher.subjects = params[:teacher][:subjects].split(',')	
     respond_to do |format|
       if @teacher.save
 		
-		user = User.find_by( userable_id:@teacher.id,userable_type:"Teacher")
-		session[:user_id] = user.id
-        format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
+		#user = User.find_by( userable_id:@teacher.id,userable_type:"Teacher")
+		#session[:user_id] = user.id
+		format.html{redirect_to root_path, notice: 'Teacher was  submitted for approval'}
+        #format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
         format.json { render :show, status: :created, location: @teacher }
       else
         format.html { render :new }
