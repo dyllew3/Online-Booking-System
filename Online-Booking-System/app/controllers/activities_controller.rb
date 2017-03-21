@@ -27,7 +27,7 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(activity_params)
-    
+    @teachers = User.where(["userable_type = ?", "Teacher"])   
 
     respond_to do |format|
       if @activity.save
@@ -92,6 +92,8 @@ class ActivitiesController < ApplicationController
     def activity_params
       params.require(:activity).permit(:ActivityName,:ResponsibleTeacher, :Description, :StartClassSuitability, :EndClassSuitability, :StartDate, :EndDate, :StartTime, :EndTime, :NoOfChildren)
     end
+    
+
     
     
 end
