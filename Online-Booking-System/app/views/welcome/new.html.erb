@@ -2,9 +2,9 @@
 <h1>Approve Unapproved users</h1>
 
 <% if @user.admin? and @user.authenticated?%>
-  <%= form_for :approved do |f| %>
+  <%= form_for :admins do |f| %>
 <h2>Approve</h2>
-	<% not_authenticated.each do |item|  %>	
+	<% non_admins.each do |item|  %>	
 		<%= f.check_box item.email %><%= item.first_name  %>  <%= item.last_name  %>  <%= item.email %><br>
 	<% end  %>
 	<div class="actions">
