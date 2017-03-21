@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 	attr_accessor :remember_token
-	has_secure_password
+	#attr_accessor :authenicated	
+has_secure_password
+	
 	belongs_to :userable,polymorphic:true
 	validates :password,presence: true,confirmation:true,length: { minimum: 6}
 	validates :email, presence: true,uniqueness: true
@@ -31,5 +33,7 @@ class User < ActiveRecord::Base
           
           return false
         end
-
+	def approve
+		update_attribute(:authenicated,true)
+	end
 end
