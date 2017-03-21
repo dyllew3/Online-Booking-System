@@ -63,8 +63,8 @@ class ParentsController < ApplicationController
         format.html { redirect_to @parent, notice: 'Parent was successfully created.' }
         format.json { render :show, status: :created, location: @parent }
       elsif(@parent.save and !@parent.user.authenicated)
-        log_in(@parent.user)
-	session[:user_id] = @parent.user.id
+       
+			
 	format.html { redirect_to root_url, notice: 'Parent was successfully created.Wait for authentication' }
 
 	   else

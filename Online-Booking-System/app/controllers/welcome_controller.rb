@@ -17,20 +17,16 @@ class WelcomeController < ApplicationController
 	end
 	def authen
 		if params["approved"] != nil 
-		@emails = params["approved"].keys
-	   	#flash[:notice] = params["approved"].keys
-	   	@emails.each do |u|
+			@emails = params["approved"].keys
+	   		#flash[:notice] = params["approved"].keys
+	   		@emails.each do |u|
 			
-			@user = User.find_by(email: u)
-			@user.approve unless params["approved"][u.to_s].to_i == 0 
-			
-				
-		end 
-	  	redirect_to root_url
-			
-		else
-			redirect_to approve_url
+				@user = User.find_by(email: u)
+				@user.approve unless params["approved"][u.to_s].to_i == 0 
+							
+			end 
 		end
+		redirect_to approve_url
 	end
 	def not_authenticated
 	    @all = User.all
