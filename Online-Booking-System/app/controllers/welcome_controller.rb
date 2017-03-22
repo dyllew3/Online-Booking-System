@@ -7,7 +7,7 @@ class WelcomeController < ApplicationController
 	   @user = User.find_by(id:session[:user_id])
 	   if @user == nil
 		redirect_to login_url
-	   elsif @user.authenicated
+	   elsif @user.authenicated and @user.admin?
 				
         else
 		redirect_to root_url
@@ -35,7 +35,7 @@ class WelcomeController < ApplicationController
 	   @user = User.find_by(id:session[:user_id])
 	   if @user == nil
 		redirect_to login_url
-	   elsif @user.authenicated
+	   elsif @user.authenicated and @user.admin?
 				
         else
 		redirect_to root_url
@@ -58,7 +58,7 @@ class WelcomeController < ApplicationController
 
 	private 
 	
-	def non_admin
+	def non_admins
 
 		@all = User.all
 	    @result = []
@@ -81,5 +81,5 @@ class WelcomeController < ApplicationController
 	    end
         return @result
 	end
-	helper_method :not_authenticated, :non_admin
+	helper_method :not_authenticated, :non_admins
 end
