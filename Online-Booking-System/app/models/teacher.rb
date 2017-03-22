@@ -5,5 +5,5 @@ class Teacher < ActiveRecord::Base
 	accepts_nested_attributes_for :user
 	#accepts_nested_attributes_for :subjects
 	validates :user,presence: true
-	validates :subjects,presence: true
+	
 end

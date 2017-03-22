@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= f.label :ResponsibleTeacher %><br>
-    <%= f.number_field :ResponsibleTeacher %>
+    <%= f.collection_select(:ResponsibleTeacher, User.where("userable_type = 'Teacher'").all, :userable_id, :first_last_name) %>
   </div>
   <div class="field">
     <%= f.label :Description %><br>

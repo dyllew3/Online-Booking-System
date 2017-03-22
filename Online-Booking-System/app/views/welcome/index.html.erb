@@ -16,9 +16,16 @@
 	</div>
 	
 	<li><a href="#">Home</a></li>
+	<% if logged_in? %>
+		<li><a href="/logout">Logout</a></li>
+	<% else %>
 	<li><a href="/login">Login</a></li>
 	<li><a href="/register">Register for account</a></li>
-	<li><a href="/registerteacher">Register as a teacher</a></li>
+	<% end %>
+	
+	<%if logged_in? and  current_user.admin == true %>
+		<li><a href="/registerteacher">Register a teacher</a></li>
+	<% end %>
 	
 	</ul>
 	

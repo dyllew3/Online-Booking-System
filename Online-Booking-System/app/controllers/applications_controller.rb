@@ -19,11 +19,13 @@ class ApplicationsController < ApplicationController
   def new
     activity = Activity.find(params[:activity_id])
     @application = activity.applications.build
+    @students = current_user.userable.students.where(["year >= ? and year <= ?", activity.StartClassSuitability, activity.EndClassSuitability])
   end
 
   # GET /applications/1/edit
   def edit
   	activity = Activity.find(params[:activity_id])
+  	@students = current_user.userable.students.where(["year >= ? and year <= ?", activity.StartClassSuitability, activity.EndClassSuitability])
   	@application = activity.applications.find(params[:id])
   end
 
@@ -31,6 +33,7 @@ class ApplicationsController < ApplicationController
   # POST /applications.json
   def create
   	activity = Activity.find(params[:activity_id])
+  	@students = current_user.userable.students.where(["year >= ? and year <= ?", activity.StartClassSuitability, activity.EndClassSuitability])
   	
     @application = activity.applications.create(application_params)
     
@@ -51,9 +54,9 @@ class ApplicationsController < ApplicationController
   # PATCH/PUT /applications/1.json
   def update
   	activity = Activity.find(params[:activity_id])
-  	@students = Student.where(parent_id: current_user.userable_id).all
+  	@students = current_user.userable.students.where(["year >= ? and year <= ?", activity.StartClassSuitability, activity.EndClassSuitability])
   	@application = activity.applications.find(params[:activity_id])
-  	
+  	@students = current_user.userable.students
     respond_to do |format|
       if @application.update(application_params)
         format.html { redirect_to (activity_applications_path), notice: 'Application was successfully updated.' }
