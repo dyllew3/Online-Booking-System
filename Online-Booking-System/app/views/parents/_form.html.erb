@@ -58,13 +58,13 @@
       <p><%= task_form.label :year %><br></p>
       <p><%= task_form.collection_select(:year, StudentClass.all, :id, :StudentClass) %></p>
  
-	<p><%= task_form.link_to_remove "Remove this task" %></p>
+	<p><%= task_form.link_to_remove "Remove this student" %></p>
  
     </div>
   <% end %>
 </div>
 
-<p><%= f.link_to_add "Add a task", :students, :data => { :target => "#tasks" } %></p>
+<p><%= f.link_to_add "Add a student", :students, :data => { :target => "#tasks" } %></p>
 	  
 
 
