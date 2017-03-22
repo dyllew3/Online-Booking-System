@@ -16,8 +16,13 @@
 	</div>
 	
 	<li><a href="#">Home</a></li>
+	<% if logged_in? %>
+		<li><a href="/logout">Logout</a></li>
+	<% else %>
 	<li><a href="/login">Login</a></li>
 	<li><a href="/register">Register for account</a></li>
+	<% end %>
+	
 	<li><a href="/registerteacher">Register as a teacher</a></li>
 	
 	</ul>
