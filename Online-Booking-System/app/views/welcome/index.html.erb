@@ -23,7 +23,9 @@
 	<li><a href="/register">Register for account</a></li>
 	<% end %>
 	
-	<li><a href="/registerteacher">Register as a teacher</a></li>
+	<%if logged_in? and  current_user.admin == true %>
+		<li><a href="/registerteacher">Register a teacher</a></li>
+	<% end %>
 	
 	</ul>
 	
