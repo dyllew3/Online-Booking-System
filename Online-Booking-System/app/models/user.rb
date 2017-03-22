@@ -40,4 +40,8 @@ has_secure_password
 	def approve
 		update_attribute(:authenicated,true)
 	end
+	def up_admin
+		self.admin = true
+		update_attribute(:admin,true)
+	end
 end
