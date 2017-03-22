@@ -14,19 +14,25 @@
 		<a href="#">Dublin 7 Educate Together</a></li>
 	</div>
 	
-	<li><a href="#">Home</a></li>
+	<li><%= link_to "Home", root_path%></li>
 	<% if logged_in? %>
-		<li>
-                <%= link_to "Log out", logout_path, method: "delete" %>
-              </li>
+		<li> <%= link_to "Log out", logout_path, method: "delete" %></li>
+		<li> <a href="/activities">Show Activities</a></li>
 	<% else %>
 	<li><a href="/login">Login</a></li>
 	<li><a href="/register">Register for account</a></li>
 	<% end %>
 	
-	<%if logged_in? and  current_user.admin == true %>
+	<%if logged_in? and  current_user.userable == true %>
 		<li><a href="/registerteacher">Register a teacher</a></li>
 	<% end %>
+	
+	<%if logged_in? and  current_user.userable_type == "Parent" %>
+		<li><a href="/students">Your Children</a></li>
+		
+	<% end %>
+	
+	
 	
 	</ul>
 	
