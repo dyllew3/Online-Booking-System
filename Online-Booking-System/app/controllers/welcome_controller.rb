@@ -26,10 +26,11 @@ class WelcomeController < ApplicationController
 			end 
 		end
 		redirect_to '/admins/add' 
+
 	end
 	
 	def approve
-	   @test = Parent.new
+	   
 	   @users = []
 	   @user = User.find_by(id:session[:user_id])
 	   if @user == nil
@@ -54,9 +55,11 @@ class WelcomeController < ApplicationController
 		end
 		redirect_to approve_url
 	end
+
 	private 
 	
 	def non_admin
+
 		@all = User.all
 	    @result = []
 	    @all.each do |u|
@@ -67,7 +70,7 @@ class WelcomeController < ApplicationController
         return @result
 
 	end
-	
+
 	def not_authenticated
 	    @all = User.all
 	    @result = []
