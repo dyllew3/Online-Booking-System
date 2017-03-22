@@ -1,3 +1,64 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.title{
+	font-family:'Arial', serif;
+	color:#000000;
+	float:left;
+	font-size:20px;
+	font-weight:Bold;
+}
+	
+//Code for buttons 
+.btn-primary
+{
+	border-top:2px solid #000000;
+	border-left:2px solid #000000;
+	border-right:2px solid #000000;
+	border-bottom:2px solid #000000;
+	padding:10px 20px !important;
+	font-size:14px !important;
+	margin: 8px;
+	background-color:#000000;
+	font-weight:bold;
+	color:#ffffff;
+}
+
+//Code for form
+input.email-control{
+	border-top:2px solid #000000;
+	border-left:2px solid #000000;
+	border-right:2px solid #000000;
+	border-bottom:2px solid #000000;
+	padding:10px 20px !important;
+	float:left;
+	margin: 8px;
+	font-size:14px !important;
+	background-color:#ffffff;
+	font-weight:bold;
+	color:#000000;
+	
+}
+
+input.password-control{
+	border-top:2px solid #000000;
+	border-left:2px solid #000000;
+	border-right:2px solid #000000;
+	border-bottom:2px solid #000000;
+	padding:10px 20px !important;
+	float:left;
+	margin: 8px;
+	font-size:14px !important;
+	background-color:#ffffff;
+	font-weight:bold;
+	color:#000000;	
+}
+
+.end-link{
+	font-family:'Arial', serif;
+	color:#000000;
+	float:left;
+	font-size:12px;
+	padding-left:15px;
+}
