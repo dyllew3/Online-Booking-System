@@ -5,7 +5,15 @@ class ApplicationsController < ApplicationController
   # GET /applications.json
   def index
     @activity = Activity.find(params[:activity_id])
-    @applications = @activity.applications
+    if current_user.userable_type == "Parent"
+    	students = current_user.userable.students.map(&:id)
+    	@applications = @activity.applications.where("student_id in (?)", students)
+    else
+    	@applications = @activity.applications
+    end 
+    
+    
+    
   end
 
   # GET /applications/1
