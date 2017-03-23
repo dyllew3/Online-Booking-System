@@ -20,11 +20,12 @@
 		<li> <a href="/activities">Show Activities</a></li>
 	<% else %>
 	<li><a href="/login">Login</a></li>
-	<li><a href="/register">Register for account</a></li>
+	<li><a href="/register">Register</a></li>
 	<% end %>
 	
 	<%if logged_in? and  current_user.admin == true  %>
-		<li><a href="/registerteacher">Register a teacher</a></li>
+		<li><a href="/registerteacher">Register a Teacher</a></li>
+		<li><a href="/approve">Approve Parents</a></li>
 	<% end %>
 	
 	<%if logged_in? and  current_user.userable_type == "Parent" %>
