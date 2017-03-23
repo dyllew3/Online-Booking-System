@@ -29,7 +29,7 @@ class TeachersController < ApplicationController
 		redirect_to login_url
 		return 0
 	end 
-	if @user.admin or @user.userable_type == "Teacher"
+	if (@user.admin or @user.userable_type == "Teacher") and @user.authenticated?
 
     	@teacher = Teacher.new
 		#@teacher.subjects = params[:subjects]
@@ -38,9 +38,9 @@ class TeachersController < ApplicationController
 	   redirect_to root_url 
 	end
 
-	else
-		redirect_to login_url
-	end		
+
+
+			
   end
 
   # GET /teachers/1/edit
@@ -51,7 +51,8 @@ class TeachersController < ApplicationController
   # POST /teachers.json
   def create
     @teacher = Teacher.new(teacher_params)
-    #@teacher.subjects = params[:teacher][:subjects].split(',')	
+    @teacher.user.authenicated = true
+    
     respond_to do |format|
       if @teacher.save
 		
