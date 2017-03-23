@@ -1,6 +1,6 @@
 class Student < ActiveRecord::Base
   belongs_to :parent
-  has_one :StudentClass
+  belongs_to :StudentClass, :foreign_key => 'year'
   has_many :applications, dependent: :destroy
   
   

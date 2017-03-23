@@ -4,7 +4,8 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.where(["parent_id = ?", current_user.userable_id]) 
+    @students = Student.where(["parent_id = ?", current_user.userable_id])
+     
   end
 
   # GET /students/1
@@ -60,7 +61,8 @@ class StudentsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+ 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student
