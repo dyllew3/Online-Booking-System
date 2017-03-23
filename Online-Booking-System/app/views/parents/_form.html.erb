@@ -14,35 +14,35 @@
 <%= f.fields_for :user do |u|  %>
 
   <div class="field">
-    <%= u.label :first_name %><br>
-    <%= u.text_field :first_name %>
+    <p><%= u.label :first_name %><br></p>
+    <p><%= u.text_field :first_name, class: 'input-box' %></p>
   </div>
 
   <div class="field">
-    <%= u.label :last_name %><br>
-    <%= u.text_field :last_name %>
+    <p><%= u.label :last_name %><br></p>
+    <p><%= u.text_field :last_name, class: 'input-box' %></p>
   </div>
 
 
   <div class="field">
-    <%= u.label :password %><br>
-    <%= u.password_field :password %>
+    <p><%= u.label :password %><br></p>
+    <p><%= u.password_field :password, class: 'input-box' %></p>
   </div>
 
   <div class="field">
-    <%= u.label :password_confirmation %><br>
-    <%= u.password_field :password_confirmation %>
+    <p><%= u.label :password_confirmation %><br></p>
+    <p><%= u.password_field :password_confirmation, class: 'input-box' %></p>
   </div>
 
   <div class="field">
-    <%= u.label :email %><br>
-    <%= u.text_field :email %>
+    <p><%= u.label :email %><br></p>
+    <p><%= u.text_field :email, class: 'input-box' %></p>
   </div>
 
 <% end  %>
  <div class="field">
-    <%= f.label :phone_num %><br>
-    <%= f.text_field :phone_num %>
+    <p><%= f.label :phone_num %><br></p>
+    <p><%= f.text_field :phone_num, class: 'input-box' %></p>
   </div>
 
 
@@ -51,24 +51,24 @@
   <div class="field">
     <p style="font-weight:bold">Child<p>
       <p><%= task_form.label :first_name %><br></p>
-      <p><%= task_form.text_field :first_name %></p>
+      <p><%= task_form.text_field :first_name, class: 'input-box' %></p>
       <p><%= task_form.label :last_name %><br></p>
-      <p><%= task_form.text_field :last_name %></p>
+      <p><%= task_form.text_field :last_name, class: 'input-box' %></p>
       
       <p><%= task_form.label :year %><br></p>
       <p><%= task_form.collection_select(:year, StudentClass.all, :id, :StudentClass) %></p>
  
-	<p><%= task_form.link_to_remove "Remove this task" %></p>
+	<p><%= task_form.link_to_remove "Remove this student" %></p>
  
     </div>
   <% end %>
 </div>
 
-<p><%= f.link_to_add "Add a task", :students, :data => { :target => "#tasks" } %></p>
+<p><%= f.link_to_add "Add a student", :students, :data => { :target => "#tasks" } %></p>
 	  
 
 
 <div class="actions">
-    <%= f.submit %>
+    <p><%= f.submit %></p>
   </div>
 <% end %>

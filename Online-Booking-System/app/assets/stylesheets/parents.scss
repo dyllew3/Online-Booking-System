@@ -1,3 +1,69 @@
 // Place all the styles related to the parents controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+h2{
+	font-family:'Arial', serif;
+	color:#000000;
+	float:left;
+	font-size:20px;
+	font-weight:bold;
+}
+
+.field{
+	padding:10px 20px !important;
+	float:left;
+	padding-left:10px;
+	padding-top:5px;
+	font-size:14px !important;
+	background-color:#ffffff;
+	font-weight:normal;
+	color:#000000;
+	display:block;
+	margin-left:auto;
+	float: left;
+    	display: inline-block;
+    	clear: left;
+	
+}
+
+.field > .input-box{
+	border-top:2px solid #000000;
+	border-left:2px solid #000000;
+	border-right:2px solid #000000;
+	border-bottom:2px solid #000000;
+	padding:10px 20px !important;
+	font-size:14px !important;
+	background-color:#ffffff;
+	font-weight:bold;
+	color:#000000;
+	display:block;
+	margin-left:auto;
+	float: left;
+    	display: inline-block;
+    	clear: left;
+}
+
+.field > p > .input-box{
+	border-top:2px solid #000000;
+	border-left:2px solid #000000;
+	border-right:2px solid #000000;
+	border-bottom:2px solid #000000;
+	padding:10px 20px !important;
+	font-size:14px !important;
+	background-color:#ffffff;
+	font-weight:bold;
+	color:#000000;
+	display:block;
+	margin-left:auto;
+	float: left;
+   	display: inline-block;
+    	clear: left;
+}
+
+p{
+	float: left;
+   	display: inline-block;
+    	clear: left;
+}
+
+
