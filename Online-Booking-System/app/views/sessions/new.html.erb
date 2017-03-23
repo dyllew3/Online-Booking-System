@@ -1,4 +1,3 @@
-
 <% provide(:title,"Log in")  %>
 <h1>Log in</h1>
 <h2><%= flash[:message]    %></h2>
@@ -6,15 +5,17 @@
 
 <div>
   <%= form_for(:session, url: login_path) do |f|  %>
-  
-  <%= f.label :email %><br>
-  <%= f.email_field :email, class: 'form-control' %><br>
-  
-  <%= f.label :password %><br>
-  <%= f.password_field :password, class: 'form-control' %><br>
-  
-  <%= f.submit "Log in", class: "btn btn-primary" %>
+	<p><%= f.label :email %><br></p>
+	<p><%= f.email_field :email, class: 'email-control' %><br></p>
+</div>
+<div>
+	<p><%= f.label :password %><br></p>
+	<p><%= f.password_field :password, class: 'password-control' %><br></p>
+</div>
+<div>
+	<p><%= f.submit "Log in", class: "btn btn-primary" %></p>
   <% end %>
-	
-    <p>New user? <%= link_to "Sign up now!",register_path %></p>
+</div>
+<div>
+    <p class="end-link">New user? <%= link_to "Sign up now!",register_path %></p>
 </div>
