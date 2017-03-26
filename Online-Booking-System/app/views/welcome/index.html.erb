@@ -10,24 +10,6 @@
 </head>
 
 <body>
-	<ul class="nav">
-	<div class="logo">
-		<a href="#">Home</a></li>
-	</div>
-	
-	<li><a href="#">Home</a></li>
-	<% if logged_in? %>
-		<li><% link_to "logout",'/logout',method: :delete %></li>
-	<% else %>
-	<li><a href="/login">Login</a></li>
-	<li><a href="/register">Register for account</a></li>
-	<% end %>
-	
-	<%if logged_in? and  current_user.admin == true %>
-		<li><a href="/registerteacher">Register a teacher</a></li>
-	<% end %>
-	
-	</ul>
 	
 	<div class="banner">
 		

@@ -51,7 +51,8 @@ class TeachersController < ApplicationController
   # POST /teachers.json
   def create
     @teacher = Teacher.new(teacher_params)
-    #@teacher.subjects = params[:teacher][:subjects].split(',')	
+    @teacher.user.authenicated = true
+    
     respond_to do |format|
       if @teacher.save
 		

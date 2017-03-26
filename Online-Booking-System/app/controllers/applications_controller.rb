@@ -5,37 +5,46 @@ class ApplicationsController < ApplicationController
   # GET /applications.json
   def index
     @activity = Activity.find(params[:activity_id])
-    @applications = @activity.applications
+    if current_user.userable_type == "Parent"
+    	students = current_user.userable.students.map(&:id)
+    	@applications = @activity.applications.where("student_id in (?)", students)
+    else
+    	@applications = @activity.applications
+    	
+    end 
+    
+    
+    
   end
 
   # GET /applications/1
   # GET /applications/1.json
   def show
-  	activity = Activity.find(params[:activity_id])
-  	@application = activity.applications.find(params[:id])
+  	@activity = Activity.find(params[:activity_id])
+  	@application = @activity.applications.find(params[:id])
   end
 
   # GET /applications/new
   def new
-    activity = Activity.find(params[:activity_id])
-    @application = activity.applications.build
-    @students = current_user.userable.students.where(["year >= ? and year <= ?", activity.StartClassSuitability, activity.EndClassSuitability])
+    @activity = Activity.find(params[:activity_id])
+    @application = @activity.applications.build
+    @students = current_user.userable.students.where(["year >= ? and year <= ?", @activity.StartClassSuitability, @activity.EndClassSuitability])
   end
 
   # GET /applications/1/edit
   def edit
-  	activity = Activity.find(params[:activity_id])
-  	@students = current_user.userable.students.where(["year >= ? and year <= ?", activity.StartClassSuitability, activity.EndClassSuitability])
-  	@application = activity.applications.find(params[:id])
+  	@activity = Activity.find(params[:activity_id])
+  	@students = current_user.userable.students.where(["year >= ? and year <= ?", @activity.StartClassSuitability, @activity.EndClassSuitability])
+  	@application = @activity.applications.find(params[:id])
   end
 
   # POST /applications
   # POST /applications.json
   def create
-  	activity = Activity.find(params[:activity_id])
-  	@students = current_user.userable.students.where(["year >= ? and year <= ?", activity.StartClassSuitability, activity.EndClassSuitability])
+  	@activity = Activity.find(params[:activity_id])
+  	@students = current_user.userable.students.where(["year >= ? and year <= ?", @activity.StartClassSuitability, @activity.EndClassSuitability])
   	
-    @application = activity.applications.create(application_params)
+    @application = @activity.applications.create(application_params)
     
 
     respond_to do |format|
@@ -53,9 +62,9 @@ class ApplicationsController < ApplicationController
   # PATCH/PUT /applications/1
   # PATCH/PUT /applications/1.json
   def update
-  	activity = Activity.find(params[:activity_id])
-  	@students = current_user.userable.students.where(["year >= ? and year <= ?", activity.StartClassSuitability, activity.EndClassSuitability])
-  	@application = activity.applications.find(params[:activity_id])
+  	@activity = Activity.find(params[:activity_id])
+  	@students = current_user.userable.students.where(["year >= ? and year <= ?", @activity.StartClassSuitability, @activity.EndClassSuitability])
+  	@application = @activity.applications.find(params[:activity_id])
   	@students = current_user.userable.students
     respond_to do |format|
       if @application.update(application_params)
