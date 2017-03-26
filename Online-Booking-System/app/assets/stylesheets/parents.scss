@@ -1,19 +1,33 @@
 // Place all the styles related to the parents controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-h2{
+h1{
 	font-family:'Arial', serif;
 	color:#000000;
 	float:left;
 	font-size:20px;
 	font-weight:bold;
+	margin-left:5px;
 }
 
 .field{
-	padding:10px 20px !important;
 	float:left;
-	padding-left:10px;
 	padding-top:5px;
+	font-size:14px !important;
+	background-color:#ffffff;
+	font-weight:bold;
+	color:#000000;
+	display:block;
+	margin-left:20px;
+	float: left;
+    	display: inline-block;
+    	clear: left;
+	
+}
+
+.input-box{
+	border:2px solid #000000;
+	padding:8px 5px !important;
 	font-size:14px !important;
 	background-color:#ffffff;
 	font-weight:normal;
@@ -23,18 +37,79 @@ h2{
 	float: left;
     	display: inline-block;
     	clear: left;
-	
 }
 
-.field > .input-box{
+p{
+	float: left;
+   	display: inline-block;
+    	clear: left;
+	margin:0;
+	padding:0;
+}
+
+p1{
+	margin-left:20px;
+	float: left;
+   	display: inline-block;
+    	clear: left;
+	padding-bottom:10px;
+}
+
+.button{
 	border-top:2px solid #000000;
 	border-left:2px solid #000000;
 	border-right:2px solid #000000;
 	border-bottom:2px solid #000000;
 	padding:10px 20px !important;
 	font-size:14px !important;
+	background-color:#000000;
+	font-weight:bold;
+	color:#ffffff;
+	display:block;
+	margin-left:20px;
+	float: left;
+   	display: inline-block;
+    	clear: left;
+	
+}
+
+
+.button:hover {
+	color:#000000;
+	background-color:#c1c1c1;
+}// Place all the styles related to the parents controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+h1{
+	font-family:'Arial', serif;
+	color:#000000;
+	float:left;
+	font-size:20px;
+	font-weight:bold;
+	margin-left:5px;
+}
+
+.field{
+	float:left;
+	padding-top:5px;
+	font-size:14px !important;
 	background-color:#ffffff;
 	font-weight:bold;
+	color:#000000;
+	display:block;
+	margin-left:20px;
+	float: left;
+    	display: inline-block;
+    	clear: left;
+	
+}
+
+.input-box{
+	border:2px solid #000000;
+	padding:8px 5px !important;
+	font-size:14px !important;
+	background-color:#ffffff;
+	font-weight:normal;
 	color:#000000;
 	display:block;
 	margin-left:auto;
@@ -43,27 +118,42 @@ h2{
     	clear: left;
 }
 
-.field > p > .input-box{
+p{
+	float: left;
+   	display: inline-block;
+    	clear: left;
+	margin:0;
+	padding:0;
+}
+
+p1{
+	margin-left:20px;
+	float: left;
+   	display: inline-block;
+    	clear: left;
+	padding-bottom:10px;
+}
+
+.button{
 	border-top:2px solid #000000;
 	border-left:2px solid #000000;
 	border-right:2px solid #000000;
 	border-bottom:2px solid #000000;
 	padding:10px 20px !important;
 	font-size:14px !important;
-	background-color:#ffffff;
+	background-color:#000000;
 	font-weight:bold;
-	color:#000000;
+	color:#ffffff;
 	display:block;
-	margin-left:auto;
+	margin-left:20px;
 	float: left;
    	display: inline-block;
     	clear: left;
-}
-
-p{
-	float: left;
-   	display: inline-block;
-    	clear: left;
+	
 }
 
 
+.button:hover {
+	color:#000000;
+	background-color:#c1c1c1;
+}
