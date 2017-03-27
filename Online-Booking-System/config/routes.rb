@@ -2,19 +2,27 @@ Rails.application.routes.draw do
   
   
   resources :activities do
-  	resources :applications
+ resources :applications
   end
-  resources :users
+  resources :parents do
+	resources :parents
+end 
+		resources :users
   resources :teachers
-  resources :parents
-  resources :students
+
+  
+resources :students
   
   root 'welcome#index'
   get '/approve' => 'welcome#approve'
+  get 'admins/add'=> 'welcome#new'
+  post '/approve' => 'welcome#authen'	  
+  post 'admins/add' => 'welcome#add_admin'
   get '/register' => 'parents#new'
   get '/registerteacher' => 'teachers#new'
-  get 'parents/homepage' => 'parents#homepage'
-  get '/teachers/homepage' => 'teachers#homepage'
+
+  get '/parents/homepage' => 'sessions#homepage'
+ # get '/teachers/homepage' => 'teachers#homepage'
   
   delete '/logout' => 'sessions#destroy'	
   get '/login' => 'sessions#new'
@@ -22,7 +30,7 @@ Rails.application.routes.draw do
   get '/newclass' => 'subjects#new'
   post '/newclass' => 'subjects#create'
 
-  get '*a', :to => "errors#show"
+#  get '*a', :to => "errors#show"
    
 
   # The priority is based upon order of creation: first created -> highest priority.
