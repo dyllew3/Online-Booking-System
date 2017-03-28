@@ -1,31 +1,41 @@
 class ActivitiesController < ApplicationController
+	include SessionsHelper	
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
   # GET /activities
   # GET /activities.json
   def index
+	@current_user = current_user
     @activities = Activity.all
   end
 
   # GET /activities/1	
   # GET /activities/1.json
   def show
+	redirect_to login_url unless !current_user.nil? and current_user.authenticated?
   end
 
   # GET /activities/new
-  def new
-	
-			@activity = Activity.new
-	
-  end
+  	def new
+		redirect_to login_url if current_user.nil? or !current_user.authenticated? or !current_user.admin?
+		
+		@activity = Activity.new if !current_user.nil? and current_user.authenticated? and current_user.admin?
+		flash[:message] = "Invalid privileges for this action"	
+ 	end
 
   # GET /activities/1/edit
   def edit
+	redirect_to root_url unless !current_user.nil? and current_user.admin? and current_user.authenticated?
   end
 
   # POST /activities
   # POST /activities.json
   def create
+	uploaded_io = params[:activity][:picture]
+	params[:activity][:image_link] = uploaded_io.original_filename
+	File.open(Rails.root.join('app/assets','images',uploaded_io.original_filename),'wb') do |file|
+	file.write(uploaded_io.read)
+	end	
     @activity = Activity.new(activity_params)
     @teachers = User.where(["userable_type = ?", "Teacher"])   
 
@@ -90,7 +100,7 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:ActivityName,:ResponsibleTeacher, :Description, :StartClassSuitability, :EndClassSuitability, :StartDate, :EndDate, :StartTime, :EndTime, :NoOfChildren)
+      params.require(:activity).permit(:ActivityName,:ResponsibleTeacher, :Description, :StartClassSuitability, :EndClassSuitability, :StartDate, :EndDate, :StartTime, :EndTime, :NoOfChildren,:image_link)
     end
     
 

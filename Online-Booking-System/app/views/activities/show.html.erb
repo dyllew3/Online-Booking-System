@@ -50,7 +50,14 @@
 <p>
   <strong>Noofchildren:</strong>
   <%= @activity.NoOfChildren %>
+
 </p>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag(@activity.image_link.to_s) %>
+
+</p>
+
 
 <%= link_to 'Apply for Activity', activity_applications_path(@activity) %> |
 <%= link_to 'Edit', edit_activity_path(@activity) %> |

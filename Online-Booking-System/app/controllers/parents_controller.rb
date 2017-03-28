@@ -1,48 +1,50 @@
 class ParentsController < ApplicationController
-  before_action :set_parent, only: [:show, :edit, :update, :destroy]
+  before_action  only: [:show, :edit, :update, :destroy]
   include SessionsHelper
   # GET /parents
   # GET /parents.json
   def index
-    @parents = Parent.all
+	redirect_to login_url unless !current_user.nil? and current_user.authenticated?  and current_user.admin?
+    @parents = Parent.all if current_user.admin? and current_user.authenticated?
   end
-
-  def homepage
-    if logged_in and  current_user.nil? and current_user.userable_type == "Parent"
-         
-      @cur_parent = Parent.find_by(id: user_id.userable_id )
-      redirect_to  @cur_parent 
-    else
-      redirect_to login_url
-    end
-    
-  end
-  
+ 
   def show
-    if logged_in and  current_user.nil? and current_user.userable_type == "Parent"
-     
-     
-    else
-      redirect_to login_url
-    end
-    
+	path = request.original_url.split('/')[-1]
+	@cur_parent =Parent.find_by(id: path.to_i)
+	redirect_to login_url unless !current_user.nil? and current_user.authenticated? and (@cur_parent.id == current_user.id or current_user.admin?) 
   end
 
   # GET /parents/new
   def new
-	@parent
+	
 	if logged_in?
-		flash[:alert] = "Already logged in"
+		flash[:message] = "Already logged in"
 		redirect_to root_url
 	else
-    	@parent = Parent.new
+   	@parent = Parent.new
 	@parent.build_user
+	@parent.students.each do |s|
+		if s.nil?
+			s.delete
+		elsif s.first_name.blank? or s.first_name.nil?
+			s.delete
+		end		
+	end
 	@parent.students << Student.new
+	
 	end
   end
 
   # GET /parents/1/edit
   def edit
+	@cur_parent = nil	
+	path = request.original_url.split('/')[-2]
+	@cur_parent =Parent.find_by(id: path.to_i)
+	@user = User.find_by(userable_id: @parent.id,userable_type:"Parent")
+	redirect_to root_url unless !@user.nil?
+	#@parent.user << @user
+			redirect_to login_url unless !current_user.nil? and current_user.authenticated? and (@cur_parent.id == current_user.id or current_user.admin?) 
+
   end
 
   # POST /parents
@@ -77,8 +79,11 @@ class ParentsController < ApplicationController
   # PATCH/PUT /parents/1
   # PATCH/PUT /parents/1.json
   def update
-    respond_to do |format|
-      if @parent.update(parent_params)
+	path = request.original_url.split('/')[-1]
+	@parent =Parent.find_by(id: path.to_i)
+	if !current_user.nil? and current_user.authenticated? and (@parent.id == current_user.id or current_user.admin?) 
+   respond_to do |format|
+      if @parent.update(parent_params) 
         format.html { redirect_to @parent, notice: 'Parent was successfully updated.' }
         format.json { render :show, status: :ok, location: @parent }
       else
@@ -86,11 +91,19 @@ class ParentsController < ApplicationController
         format.json { render json: @parent.errors, status: :unprocessable_entity }
       end
     end
+	else
+		redirect_to root_url
+	end
   end
 
   # DELETE /parents/1
   # DELETE /parents/1.json
   def destroy
+	path = request.original_url.split('/')[-1]
+	@parent =Parent.find_by(id: path.to_i)
+	@students = @parent.students
+
+	
     @parent.destroy
     respond_to do |format|
       format.html { redirect_to parents_url, notice: 'Parent was successfully destroyed.' }
@@ -106,7 +119,7 @@ class ParentsController < ApplicationController
       @parent = Parent.find_by(id: current_user.userable_id)   
        
     else
-      redirect_to login_url
+      #redirect_to login_url
     end
     
       
@@ -115,8 +128,9 @@ class ParentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def parent_params
 	
-      params.require(:parent).permit(:phone_num,user_attributes:[:first_name,:last_name,:email,:password,:password_confirmation],students_attributes:[:first_name,:last_name,:year])
+      params.require(:parent).permit(:phone_num,user_attributes:[:first_name,:last_name,:email,:password,:password_confirmation])
 
 	end
+	
 
 end

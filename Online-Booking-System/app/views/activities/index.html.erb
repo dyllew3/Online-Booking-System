@@ -32,9 +32,14 @@
         <td><%= activity.StartTime.strftime("%H:%M:%S") %></td>
         <td><%= activity.EndTime.strftime("%H:%M:%S") %></td>
         <td><%= activity.NoOfChildren %></td>
-        <td><%= link_to 'Show', activity %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+	       <td><%= link_to 'Show', activity %></td>
+        	<% if !@current_user.nil? and @current_user.admin? and @current_user.authenticated?  %>
+ 
+		<td><%= link_to 'Edit', edit_activity_path(activity) %></td>
         <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<% end  %>
+
+
       </tr>
     <% end %>
   </tbody>
@@ -42,4 +47,7 @@
 
 <br>
 
+		<% if !@current_user.nil? and @current_user.admin? and @current_user.authenticated?  %>
 <%= link_to 'New Activity', new_activity_path %>
+<% end  %>
+
