@@ -16,22 +16,16 @@ class ParentsController < ApplicationController
 
   # GET /parents/new
   def new
-	
+	@parent.students.delete unless @parent.nil? or @parents.students.nil?
+		@parent = Parent.new
+	params[:students] = nil
 	if logged_in?
 		flash[:message] = "Already logged in"
 		redirect_to root_url
 	else
-   	@parent = Parent.new
-	@parent.build_user
-	@parent.students.each do |s|
-		if s.nil?
-			s.delete
-		elsif s.first_name.blank? or s.first_name.nil?
-			s.delete
-		end		
-	end
+   	@parent.build_user
 	@parent.students << Student.new
-	
+
 	end
   end
 
@@ -40,7 +34,7 @@ class ParentsController < ApplicationController
 	@cur_parent = nil	
 	path = request.original_url.split('/')[-2]
 	@cur_parent =Parent.find_by(id: path.to_i)
-	@user = User.find_by(userable_id: @parent.id,userable_type:"Parent")
+	@user = User.find_by(userable_id: @cur_parent.id,userable_type:"Parent")
 	redirect_to root_url unless !@user.nil?
 	#@parent.user << @user
 			redirect_to login_url unless !current_user.nil? and current_user.authenticated? and (@cur_parent.id == current_user.id or current_user.admin?) 
@@ -80,7 +74,7 @@ class ParentsController < ApplicationController
   # PATCH/PUT /parents/1.json
   def update
 	path = request.original_url.split('/')[-1]
-	@parent =Parent.find_by(id: path.to_i)
+	@cur_parent =Parent.find_by(id: path.to_i)
 	if !current_user.nil? and current_user.authenticated? and (@parent.id == current_user.id or current_user.admin?) 
    respond_to do |format|
       if @parent.update(parent_params) 
@@ -128,7 +122,7 @@ class ParentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def parent_params
 	
-      params.require(:parent).permit(:phone_num,user_attributes:[:first_name,:last_name,:email,:password,:password_confirmation])
+      params.require(:parent).permit(:phone_num,user_attributes:[:first_name,:last_name,:email,:password,:password_confirmation],students_attributes:[:id,:first_name,:last_name,:year,:_destroy])
 
 	end
 	
