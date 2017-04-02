@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Activities Applied For</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Activity Name</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <div>
+   <p> <% @applications.each do |application| %>
+      <tr>
+        <td><%= application.activity.ActivityName %></td>
+        <td><%= link_to 'Show Activity', application.activity%></td>
+         <td><%= link_to 'Delete Application', [application.activity,application], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %></p>
+  </div>
+  </tbody>
+</table>

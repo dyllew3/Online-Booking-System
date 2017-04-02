@@ -1,4 +1,4 @@
 class Application < ActiveRecord::Base
   belongs_to :student
-  has_one :activity
+  belongs_to :activity
 end

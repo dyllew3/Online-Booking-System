@@ -20,6 +20,7 @@ resources :students
   post 'admins/add' => 'welcome#add_admin'
   get '/register' => 'parents#new'
   get '/registerteacher' => 'teachers#new'
+  get '/students/:id/activities' => 'students#activity'
 
   get '/parents/homepage' => 'sessions#homepage'
  # get '/teachers/homepage' => 'teachers#homepage'

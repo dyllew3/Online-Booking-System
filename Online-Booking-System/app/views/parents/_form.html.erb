@@ -59,18 +59,12 @@
       <p><%= task_form.collection_select(:year, StudentClass.all, :id, :StudentClass, {}, {:class => 'input-box'}) %></p>
  
 	<p><%= task_form.link_to_remove "Remove this student" %></p>
-    
-  
-	</div> 
-<% end %>
-
-</div>
-<p><%= f.link_to_add "Add another student", :students, :data => { :target => "#tasks" } %></p>
-
-
-<div>
+ 
+    </div>
+  <% end %>
 </div>
 
+<p1><%= f.link_to_add "Add another student", :students, :data => { :target => "#tasks" } %></p1>
 	  
 
 

@@ -1,3 +1,95 @@
 // Place all the styles related to the Activities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.button{
+	font-family:'Arial', serif;
+	border:1px solid #000000;
+	padding:10px 20px !important;
+	font-size:17px !important;
+	background-color:#000000;
+	font-weight:bold;
+	color:#ffffff;
+	margin-left:20px;
+   	float:left;
+   	display: inline-block;
+	clear:left;
+}
+
+.button1{
+	font-family:'Arial', serif;
+	border:1px solid #000000;
+	padding:10px 20px !important;
+	font-size:17px !important;
+	background-color:#000000;
+	font-weight:bold;
+	color:#ffffff;
+	margin-left:20px;
+	list-style:none;
+	display:inline-block;
+	position:relative;
+}
+
+.button2{
+	font-family:'Arial', serif;
+	border:1px solid #000000;
+	padding:10px 20px !important;
+	font-size:17px !important;
+	background-color:#000000;
+	font-weight:bold;
+	color:#ffffff;
+	margin-left:20px;
+   	list-style:none;
+	display:inline-block;
+	position:relative;
+}
+
+.button3{
+	font-family:'Arial', serif;
+	border:1px solid #000000;
+	padding:10px 20px !important;
+	font-size:17px !important;
+	background-color:#000000;
+	font-weight:bold;
+	color:#ffffff;
+	margin-left:20px;
+   	list-style:none;
+	display:inline-block;
+	position:relative;
+}
+
+
+.button:hover {
+	color:#ffffff;
+	background-color:#c1c1c1;
+}
+
+.image-1 img{
+	max-width:260px;
+	max-height:260px;
+}
+
+.image-2 img{
+	max-width:400px;
+	max-height:400px;
+	padding:30px 200px 30px 30px;
+	display:inline-block;
+	float:right;
+}
+
+
+.table{
+	font-family:'Arial', serif;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.text{
+	font-size:16px;
+	padding-left:20px;
+}
+
+.container{
+	font-size:16px;
+}

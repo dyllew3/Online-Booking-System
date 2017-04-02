@@ -1,14 +1,13 @@
 <div>
-<h1>Approve Unapproved users</h1>
+<h1>Approve</h1>
 
 <% if @user.admin? and @user.authenticated?%>
   <%= form_for :approved do |f| %>
-<h2>Approve</h2>
 	<% not_authenticated.each do |item|  %>	
-		<%= f.check_box item.email %><%= item.first_name  %>  <%= item.last_name  %>  <%= item.email %><br>
+		<p><%= f.check_box item.email %><%= item.first_name  %>  <%= item.last_name  %>  <%= item.email %><br></p>
 	<% end  %>
 	<div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save Approved", class:'button' %>
   </div>
 
 	<%end%>

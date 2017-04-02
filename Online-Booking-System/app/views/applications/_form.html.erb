@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :student_id %><br>
-    <%= f.collection_select(:student_id, @students, :id, :first_last_name) %>
+    <p><%= f.label :student_id %><br></p>
+    <%= f.collection_select(:student_id, @students, :id, :first_last_name, {}, {class: 'input-box'}) %>
   </div>
   
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", class: 'button' %>
   </div>
 <% end %>

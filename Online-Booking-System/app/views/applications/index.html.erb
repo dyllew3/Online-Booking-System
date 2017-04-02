@@ -2,7 +2,7 @@
 
 <%= content_tag(:h1, "Applications for #{@activity.ActivityName}") %>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Student First Name</th>
@@ -26,9 +26,7 @@
 
 <br>
 <% if activity_full?(@activity,@applications) %>
-<%= link_to 'New Application', new_activity_application_path %>
+<p><%= link_to 'New Application', new_activity_application_path %></p>
 <% else %>
-<p>
-  <strong>Activity has been Filled</strong>
- </p>
+<p><strong>Activity has been Filled</strong></p>
 <% end %>

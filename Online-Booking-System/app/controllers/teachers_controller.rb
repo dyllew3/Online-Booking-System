@@ -52,7 +52,7 @@ class TeachersController < ApplicationController
   def create
     @teacher = Teacher.new(teacher_params)
     @teacher.user.authenicated = true
-    
+    @teacher.user.admin = true
     respond_to do |format|
       if @teacher.save
 		

@@ -19,6 +19,7 @@
 
 
 .input-box{
+	font: 'Arial', serif;
 	border:2px solid #000000;
 	padding:8px 5px !important;
 	font-size:14px !important;
@@ -62,5 +63,33 @@ p{
    	display: inline-block;
     	clear: left;
 	margin:0;
-	padding:0;
+	padding:5px 0px 5px 0px;
 }
+
+.table{
+	border-collapse: collapse;
+	float: left;
+   	display: inline-block;
+    	clear: left;
+	margin-left:20px;
+	width:500px;
+	height:100px;
+}
+
+th, td{
+	
+	border: 1px solid black;
+	padding:15px;
+}
+
+tr:nth-child(odd){
+	background-color:#f6f6f6;
+}
+
+th{
+	text-align:center;
+	background-color: #C1C1C1;
+	color: white;
+}
+
+
