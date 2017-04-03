@@ -4,7 +4,9 @@
 <% if @user.admin? and @user.authenticated?%>
   <%= form_for :approved do |f| %>
 	<% not_authenticated.each do |item|  %>	
+		<div class="parent-approve">
 		<p><%= f.check_box item.email %><%= item.first_name  %>  <%= item.last_name  %>  <%= item.email %><br></p>
+		</div>
 	<% end  %>
 	<div class="actions">
     <%= f.submit "Save Approved", class:'button' %>

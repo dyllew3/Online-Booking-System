@@ -1,9 +1,10 @@
-<p id="notice"><%= notice %></p>
-
 <% if !@current_user.nil? and @current_user.admin? and @current_user.authenticated?  %>
+<div class="button">
 <p><%= link_to 'New Activity', new_activity_path %></p>
+</div>
 <% end  %>
 
+<div class="table1">
 <table class="table">
   <tbody>
     <% @activities.each do |activity| %>
@@ -15,7 +16,7 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 

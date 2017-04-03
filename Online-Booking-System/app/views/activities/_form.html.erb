@@ -12,51 +12,52 @@
   <% end %>
   
   <div class="field">
-    <%= f.label :ActivityName %><br>
-    <%= f.text_area :ActivityName %>
+    <%= f.label :ActivityName, "Activity Name"%><br>
+    <%= f.text_area :ActivityName, class: 'input-box' %>
   </div>
 
   <div class="field">
-    <%= f.label :ResponsibleTeacher %><br>
-    <%= f.collection_select(:ResponsibleTeacher, User.where("userable_type = 'Teacher'").all, :userable_id, :first_last_name) %>
+    <%= f.label :ResponsibleTeacher, "Responsible Teacher" %><br>
+    <%= f.collection_select(:ResponsibleTeacher, User.where("userable_type = 'Teacher'").all, :userable_id, :first_last_name, {}, {:class => 'input-box'}) %>
   </div>
   <div class="field">
     <%= f.label :Description %><br>
-    <%= f.text_area :Description %>
+    <%= f.text_area :Description, class: 'input-box' %>
   </div>
   <div class="field">
-    <%= f.label :StartClassSuitability %><br>
-    <%= f.collection_select(:StartClassSuitability, StudentClass.all, :id, :StudentClass) %>
+    <%= f.label :StartClassSuitability, "Age Group Start" %><br>
+    <%= f.collection_select(:StartClassSuitability, StudentClass.all, :id, :StudentClass, {}, {:class => 'input-box'}) %>
   </div>
   <div class="field">
-    <%= f.label :EndClassSuitability %><br>
-    <%= f.collection_select(:EndClassSuitability, StudentClass.all, :id, :StudentClass) %>
+    <%= f.label :EndClassSuitability, "Age Group End" %><br>
+    <%= f.collection_select(:EndClassSuitability, StudentClass.all, :id, :StudentClass, {}, {:class => 'input-box'}) %>
   </div>
   <div class="field">
-    <%= f.label :StartDate %><br>
-    <%= f.date_select :StartDate %>
+    <%= f.label :StartDate, "Start Date" %><br>
+    <span class="dropdown-box"><%= f.date_select :StartDate %></span>
   </div>
   <div class="field">
-    <%= f.label :EndDate %><br>
-    <%= f.date_select :EndDate %>
+    <%= f.label :EndDate, "End Date" %><br>
+    <span class="dropdown-box"><%= f.date_select :EndDate %></span>
   </div>
   <div class="field">
-    <%= f.label :StartTime %><br>
-    <%= f.time_select :StartTime %>
+    <%= f.label :StartTime, "Start Time" %><br>
+    <span class="dropdown-box1"><%= f.time_select :StartTime%></span>
   </div>
   <div class="field">
-    <%= f.label :EndTime %><br>
-    <%= f.time_select :EndTime %>
+    <%= f.label :EndTime, "End Time" %><br>
+    <span class="dropdown-box1"><%= f.time_select :EndTime %></span>
   </div>
   <div class="field">
-    <%= f.label :NoOfChildren %><br>
-    <%= f.number_field :NoOfChildren %>
+    <%= f.label :NoOfChildren, "Capacity" %><br>
+    <%= f.number_field :NoOfChildren, class: 'input-box' %>
   </div>
-	<div>
+	<div class="field">
 	<%= f.label :picture%>
-	<%=f.file_field :picture %>
+	<%=f.file_field :picture, class:'browse' %>
 	</div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div>
+    <%= f.submit "Create Activity", class:'button' %>
   </div>
 <% end %>

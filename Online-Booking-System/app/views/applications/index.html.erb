@@ -1,6 +1,12 @@
-<p id="notice"><%= notice %></p>
-
 <%= content_tag(:h1, "Applications for #{@activity.ActivityName}") %>
+
+<% if activity_full?(@activity,@applications) %>
+<div class="button">
+<p><%= link_to 'New Application', new_activity_application_path %></p>
+</div>
+<% else %>
+<p><strong>Activity has been Filled</strong></p>
+<% end %>
 
 <table class="table">
   <thead>
@@ -25,8 +31,4 @@
 </table>
 
 <br>
-<% if activity_full?(@activity,@applications) %>
-<p><%= link_to 'New Application', new_activity_application_path %></p>
-<% else %>
-<p><strong>Activity has been Filled</strong></p>
-<% end %>
+
