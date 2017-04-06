@@ -2,9 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#button1 a:link, #button1 a:visited, #button1 a:active,  { 
+	text-decoration:none; 
+	color:#ffffff;
+}
+
+#button1 a:hover{
+	text-decoration:none;
+	color:#000000;
+	background-color:#c1c1c1;
+}
 
 .button{
 	font-family:'Arial', serif;
+	text-decoration:  none;
 	border:1px solid #000000;
 	padding:10px 20px;
 	margin-top:20px;
@@ -20,6 +31,7 @@
 
 .button1{
 	font-family:'Arial', serif;
+	text-decoration:  none;
 	border:1px solid #000000;
 	padding:10px 20px !important;
 	font-size:17px !important;
@@ -32,36 +44,8 @@
 	position:relative;
 }
 
-.button2{
-	font-family:'Arial', serif;
-	border:1px solid #000000;
-	padding:10px 20px !important;
-	font-size:17px !important;
-	background-color:#000000;
-	font-weight:bold;
-	color:#ffffff;
-	margin-left:20px;
-   	list-style:none;
-	display:inline-block;
-	position:relative;
-}
-
-.button3{
-	font-family:'Arial', serif;
-	border:1px solid #000000;
-	padding:10px 20px !important;
-	font-size:17px !important;
-	background-color:#000000;
-	font-weight:bold;
-	color:#ffffff;
-	margin-left:20px;
-   	list-style:none;
-	display:inline-block;
-	position:relative;
-}
-
-
 .button:hover {
+	text-decoration:  none;
 	color:#ffffff;
 	background-color:#c1c1c1;
 }
@@ -175,9 +159,9 @@ p{
 }
 
 .image-2 img{
-	max-width:400px;
-	max-height:400px;
-	padding:30px 200px 30px 30px;
+	max-width:500px;
+	max-height:500px;
+	padding:30px 300px 30px 30px;
 	display:inline-block;
 	float:right;
 }

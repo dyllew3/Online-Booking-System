@@ -1,8 +1,10 @@
 <% if !@current_user.nil? and @current_user.admin? and @current_user.authenticated?  %>
 <div class="button">
+<div id="button1">
 <p><%= link_to 'New Activity', new_activity_path %></p>
 </div>
 <% end  %>
+</div>
 
 <div class="table1">
 <table class="table">

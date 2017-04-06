@@ -62,16 +62,26 @@
 </div>
 
 
-<div class="button1">
+<div class="button">
+	<div id="button1">
+	<%if logged_in? and  current_user.admin == true  %>
+	<%= link_to 'Applications for Activity', activity_applications_path(@activity) %>
+	<% else %>
+	<%= link_to 'Apply for Activity', activity_applications_path(@activity) %>
+	<% end %>
+	</div>
+</div>
 <%if logged_in? and  current_user.admin == true  %>
-<%= link_to 'Applications for Activity', activity_applications_path(@activity) %>
-<% else %>
-<%= link_to 'Apply for Activity', activity_applications_path(@activity) %>
+<div class="button">
+	<div id="button1">
+	
+	<%= link_to 'Edit', edit_activity_path(@activity) %>
+	
+	</div>
+</div>
 <% end %>
-</div>
-<div class="button2">
-<%= link_to 'Edit', edit_activity_path(@activity) %>
-</div>
-<div class="button3">
-<%= link_to 'Back', activities_path %>
+<div class="button">
+	<div id="button1">
+	<%= link_to 'Back', activities_path %>
+	</div>
 </div>
