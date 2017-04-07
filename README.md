@@ -10,6 +10,7 @@ When you enter the folder run these commands :
   + sudo gem install sqlite3-ruby
   + sudo apt-get install ruby-dev
   + sudo gem install bundler
+  
 Then run the commands:
   + bundle install
   + rake db:migrate
