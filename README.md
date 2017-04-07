@@ -14,5 +14,6 @@ When you enter the folder run these commands :
 Then run the commands:
   + bundle install
   + rake db:migrate
+  
 Now the server should be working so in order to run the server run the command
 rails server
