@@ -53,7 +53,8 @@ def lock(usr_id)
 	 
 	elsif @lock.count >= 3
 		if  time_dif(@lock.updated_at)
-			@lock.update(count:0)
+			value = 0
+			@lock.update(count:value)
 			@lock.save
 		else
 			return true
