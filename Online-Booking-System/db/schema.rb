@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326151101) do
+ActiveRecord::Schema.define(version: 20170407092654) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "ResponsibleTeacher"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20170326151101) do
   create_table "lockouts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "count"
+    t.integer  "user_id"
   end
 
   create_table "parents", force: :cascade do |t|
