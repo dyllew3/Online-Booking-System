@@ -5,7 +5,7 @@ class ParentsController < ApplicationController
   # GET /parents.json
   def index
 	redirect_to login_url unless !current_user.nil? and current_user.authenticated?  and current_user.admin?
-    @parents = Parent.all if current_user.admin? and current_user.authenticated?
+    @parents = Parent.all if !current_user.nil? and current_user.admin? and current_user.authenticated?
   end
  
   def show
