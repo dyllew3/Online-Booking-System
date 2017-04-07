@@ -16,4 +16,4 @@ Then run the commands:
   + rake db:migrate
   
 Now the server should be working so in order to run the server run the command:
-  +rails server
+  + rails server
