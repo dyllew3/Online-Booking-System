@@ -21,6 +21,11 @@ class StudentsController < ApplicationController
   # GET /students/1/edit
   def edit
   end
+  
+  def activity
+    @student = Student.find(params[:id])
+  	@applications = @student.applications
+  end
 
   # POST /students
   # POST /students.json

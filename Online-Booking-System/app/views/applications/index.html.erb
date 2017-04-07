@@ -1,8 +1,16 @@
-<p id="notice"><%= notice %></p>
-
 <%= content_tag(:h1, "Applications for #{@activity.ActivityName}") %>
 
-<table>
+<% if activity_full?(@activity,@applications) %>
+<div class="button">
+<div id="button1">
+<p><%= link_to 'New Application', new_activity_application_path %></p>
+</div>
+<% else %>
+<p><strong>Activity has been Filled</strong></p>
+<% end %>
+</div>
+
+<table class="table">
   <thead>
     <tr>
       <th>Student First Name</th>
@@ -18,17 +26,10 @@
         <td><%= application.student.last_name %></td>
         <td><%= link_to 'Show', [application.activity,application] %></td>
         <td><%= link_to 'Edit', edit_activity_application_path(application.activity,application) %></td>
-        <td><%= link_to 'Destroy', [application.activity,application], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', [application.activity,application], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<% if activity_full?(@activity,@applications) %>
-<%= link_to 'New Application', new_activity_application_path %>
-<% else %>
-<p>
-  <strong>Activity has been Filled</strong>
- </p>
-<% end %>

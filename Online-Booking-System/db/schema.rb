@@ -13,8 +13,21 @@
 
 ActiveRecord::Schema.define(version: 20170326151101) do
 
-# Could not dump table "activities" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "activities", force: :cascade do |t|
+    t.integer  "ResponsibleTeacher"
+    t.text     "Description"
+    t.integer  "StartClassSuitability"
+    t.integer  "EndClassSuitability"
+    t.date     "StartDate"
+    t.date     "EndDate"
+    t.time     "StartTime"
+    t.time     "EndTime"
+    t.integer  "NoOfChildren"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.string   "ActivityName"
+    t.string   "image_link"
+  end
 
   create_table "activity_dates", force: :cascade do |t|
     t.integer  "activity_id"
@@ -34,13 +47,6 @@ ActiveRecord::Schema.define(version: 20170326151101) do
 
   add_index "applications", ["activity_id"], name: "index_applications_on_activity_id"
   add_index "applications", ["student_id"], name: "index_applications_on_student_id"
-
-  create_table "locked_outs", force: :cascade do |t|
-    t.string   "user_id"
-    t.datetime "time_of"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "lockouts", force: :cascade do |t|
     t.datetime "created_at", null: false

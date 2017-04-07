@@ -1,27 +1,29 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Parents</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Phone num</th>
-      <th colspan="3"></th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email Address</th>
+      <th>Phone Number</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @parents.each do |parent| %>
+    <p><% @parents.each do |parent| %>
       <tr>
+        <td><%= parent.user.first_name %></td>
+        <td><%= parent.user.last_name %></td>
+        <td><%= parent.user.email %></td>
         <td><%= parent.phone_num %></td>
-        <td><%= link_to 'Show', parent %></td>
         <td><%= link_to 'Edit', edit_parent_path(parent) %></td>
-        <td><%= link_to 'Destroy', parent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', parent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+    <% end %></p>
   </tbody>
 </table>
 
 <br>
 
-<h2><%= link_to 'New Parent', new_parent_path %></h2>

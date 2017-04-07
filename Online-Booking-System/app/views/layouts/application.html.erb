@@ -26,6 +26,8 @@
 	<%if logged_in? and  current_user.admin == true  %>
 		<li><a href="/registerteacher">Register a Teacher</a></li>
 		<li><a href="/approve">Approve Parents</a></li>
+		<li><a href="/parents">Show Parents</a></li>
+		<li><a href="/teachers">Show Teachers</a></li>
 	<% end %>
 	
 	<%if logged_in? and  current_user.userable_type == "Parent" %>

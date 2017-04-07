@@ -2,5 +2,6 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @activity %> |
-<%= link_to 'Back', activities_path %>
+<div class="button">
+<p><%= link_to 'Delete', @activity, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+</div>

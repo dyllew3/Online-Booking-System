@@ -1,3 +1,179 @@
 // Place all the styles related to the Activities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#button1 a:link, #button1 a:visited, #button1 a:active,  { 
+	text-decoration:none; 
+	color:#ffffff;
+}
+
+#button1 a:hover{
+	text-decoration:none;
+	color:#000000;
+	background-color:#c1c1c1;
+}
+
+.button{
+	font-family:'Arial', serif;
+	text-decoration:  none;
+	border:1px solid #000000;
+	padding:10px 20px;
+	margin-top:20px;
+	font-size:17px !important;
+	background-color:#000000;
+	font-weight:bold;
+	color:#ffffff;
+	margin-left:20px;
+   	float:left;
+   	display: inline-block;
+	clear:left;
+}
+
+.button1{
+	font-family:'Arial', serif;
+	text-decoration:  none;
+	border:1px solid #000000;
+	padding:10px 20px !important;
+	font-size:17px !important;
+	background-color:#000000;
+	font-weight:bold;
+	color:#ffffff;
+	margin-left:20px;
+	list-style:none;
+	display:inline-block;
+	position:relative;
+}
+
+.button:hover {
+	text-decoration:  none;
+	color:#ffffff;
+	background-color:#c1c1c1;
+}
+
+//Form
+.field{
+	float:left;
+	padding-top:5px;
+	font-size:14px !important;
+	background-color:#ffffff;
+	font-weight:bold;
+	color:#000000;
+	display:block;
+	margin-left:20px;
+	float: left;
+    	display: inline-block;
+    	clear: left;
+	
+}
+
+.input-box{
+	border:2px solid #000000;
+	padding:8px 5px !important;
+	font-size:14px !important;
+	background-color:#ffffff;
+	font-weight:normal;
+	color:#000000;
+	display:block;
+	margin-left:auto;
+	float: left;
+    	display: inline-block;
+    	clear: left;
+}
+
+.dropdown-box select:nth-child(1){
+	border:2px solid #000000;
+	padding:8px 8px !important;
+	font-size:14px !important;
+	background-color:#ffffff;
+	font-weight:normal;
+	color:#000000;
+	display:block;
+	margin-left:auto;
+	float: left;
+    	display: inline-block;
+    	clear: left;
+}
+.dropdown-box select:nth-child(2){
+	border:2px solid #000000;
+	padding:8px 5px !important;
+	font-size:14px !important;
+	background-color:#ffffff;
+	font-weight:normal;
+	color:#000000;
+	display:block;
+	margin-left:auto;
+    	display: inline-block;
+    	clear: left;
+}
+.dropdown-box select:nth-child(3){
+	border:2px solid #000000;
+	padding:8px 5px !important;
+	font-size:14px !important;
+	background-color:#ffffff;
+	font-weight:normal;
+	color:#000000;
+	display:block;
+	margin-left:auto;
+    	display: inline-block;
+    	clear: left;
+}
+
+.dropdown-box1 select:nth-child(1){
+	border:2px solid #000000;
+	padding:8px 8px !important;
+	font-size:14px !important;
+	background-color:#ffffff;
+	font-weight:normal;
+	color:#000000;
+	display:block;
+	margin-left:auto;
+	float: left;
+    	display: inline-block;
+    	clear: left;
+}
+.dropdown-box1 select:nth-child(2){
+	border:2px solid #000000;
+	padding:8px 5px !important;
+	font-size:14px !important;
+	background-color:#ffffff;
+	font-weight:normal;
+	color:#000000;
+	display:block;
+	margin-left:auto;
+    	display: inline-block;
+    	clear: left;
+}
+
+p{
+	float: left;
+   	display: inline-block;
+    	clear: left;
+	margin:0;
+	padding:0;
+}
+
+
+.image-1 img{
+	max-width:300px;
+	max-height:300px;
+}
+
+.image-2 img{
+	max-width:500px;
+	max-height:500px;
+	padding:30px 300px 30px 30px;
+	display:inline-block;
+	float:right;
+}
+
+.table{
+	font-family:'Arial', serif;
+	margin:auto;
+	padding-top:20px;
+}
+
+.text{
+	font-size:16px;
+	padding-left:20px;
+}
+
